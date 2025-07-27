@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-100 text-secondary-900 hover:bg-secondary-200;
+  }
+
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 lg:py-20;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(203 213 225) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(203 213 225);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(148 163 184);
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Toast styles */
+.toast-success {
+  @apply bg-green-50 border border-green-200 text-green-800;
+}
+
+.toast-error {
+  @apply bg-red-50 border border-red-200 text-red-800;
+}
+
+.toast-warning {
+  @apply bg-yellow-50 border border-yellow-200 text-yellow-800;
+}
+
+.toast-info {
+  @apply bg-blue-50 border border-blue-200 text-blue-800;
+}
+
+/* Focus styles for accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+}
+
+/* Product card hover effects */
+.product-card {
+  @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+}
+
+/* Mobile responsive text */
+.responsive-text {
+  @apply text-sm sm:text-base lg:text-lg;
+}
+
+/* Grid layouts */
+.products-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+.dashboard-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+/* Form styles */
+.form-group {
+  @apply space-y-1;
+}
+
+.form-error {
+  @apply text-sm text-red-600;
+}
+
+.form-helper {
+  @apply text-sm text-gray-500;
+}
+
+/* Status badges */
+.status-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.status-success {
+  @apply bg-green-100 text-green-800;
+}
+
+.status-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.status-error {
+  @apply bg-red-100 text-red-800;
+}
+
+.status-info {
+  @apply bg-blue-100 text-blue-800;
+}
+
+/* Navigation styles */
+.nav-link {
+  @apply text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors;
+}
+
+.nav-link-active {
+  @apply bg-primary-100 text-primary-700;
+}
+
+/* Mobile menu overlay */
+.mobile-menu-overlay {
+  @apply fixed inset-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm;
+}
+
+/* Dropdown animations */
+.dropdown-enter {
+  @apply opacity-0 scale-95;
+}
+
+.dropdown-enter-active {
+  @apply opacity-100 scale-100 transition duration-100 ease-out;
+}
+
+.dropdown-exit {
+  @apply opacity-100 scale-100;
+}
+
+.dropdown-exit-active {
+  @apply opacity-0 scale-95 transition duration-75 ease-in;
+}
